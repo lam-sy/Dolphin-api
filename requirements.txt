@@ -1,8 +1,7 @@
 albumentations==1.4.0
 numpy==1.24.4
 omegaconf==2.3.0
-opencv-python==4.11.0.86
-opencv-python-headless==4.5.5.64
+opencv-python-headless==4.9.0.80
 pillow==9.3.0
 timm==0.5.4
 torch==2.1.0
@@ -10,3 +9,8 @@ torchvision==0.16.0
 transformers==4.47.0
 accelerate==1.6.0
 pymupdf==1.26
+fastapi
+uvicorn
+beautifulsoup4
+requests
+python-multipart

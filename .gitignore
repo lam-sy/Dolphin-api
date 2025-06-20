@@ -152,3 +152,6 @@ Desktop.ini
 
 fusion_result.json
 kernel_meta/
+samples/
+results/
+results_api/
