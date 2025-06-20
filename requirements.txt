@@ -9,8 +9,9 @@ torchvision==0.16.0
 transformers==4.47.0
 accelerate==1.6.0
 pymupdf==1.26
-fastapi
-uvicorn
-beautifulsoup4
-requests
-python-multipart
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+beautifulsoup4==4.12.2
+requests==2.31.0
+python-multipart==0.0.6
+pydantic==2.5.0

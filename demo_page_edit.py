@@ -6,6 +6,7 @@ SPDX-License-Identifier: MIT
 import argparse
 import glob
 import os
+import copy
 
 import cv2
 from omegaconf import OmegaConf
@@ -55,8 +56,8 @@ def parse_html_to_json(html_text):
                         cell_info = {
                             "content": cell_text,
                             "tag": cell.name,
-                            "colspan": int(cell.get('colspan', 1)),
-                            "rowspan": int(cell.get('rowspan', 1))
+                            "colspan": int(cell.get('colspan', 1)) if cell.get('colspan', '1').isdigit() else 1,
+                            "rowspan": int(cell.get('rowspan', 1)) if cell.get('rowspan', '1').isdigit() else 1
                         }
                         row_data.append(cell_info)
                     table_data["rows"].append(row_data)
@@ -294,11 +295,11 @@ def save_combined_pdf_results_with_html_parsing(all_page_results, pdf_path, save
     # Process all page results to add HTML parsing to JSON
     processed_page_results = []
     for page_data in all_page_results:
-        processed_page = page_data.copy()
+        processed_page = copy.deepcopy(page_data)
         processed_elements = []
         
         for element in page_data.get("elements", []):
-            processed_element = element.copy()
+            processed_element = copy.deepcopy(element)
             
             # Parse HTML content in the text field for JSON output
             if 'text' in processed_element and processed_element['text']:
@@ -369,7 +370,7 @@ def save_outputs_with_html_parsing(recognition_results, image_path, save_dir):
     # Create a copy of recognition_results for JSON with parsed HTML
     json_results = []
     for result in recognition_results:
-        json_result = result.copy()
+        json_result = copy.deepcopy(result)
         
         # Parse HTML content in the text field for JSON output
         if 'text' in json_result and json_result['text']:

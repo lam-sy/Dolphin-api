@@ -152,7 +152,10 @@ Desktop.ini
 
 fusion_result.json
 kernel_meta/
+
+# Test files and results
 samples/
 results/
+test_api/
 results_api/
 checkpoints/
